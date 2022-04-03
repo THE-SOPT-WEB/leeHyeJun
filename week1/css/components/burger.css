@@ -38,3 +38,9 @@
 .burger__desc {
   font-size: 15px;
 }
+
+@media screen and (max-width: 1350px) {
+  .burger__card {
+    width: 60%;
+  }
+}
