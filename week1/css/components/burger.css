@@ -2,13 +2,12 @@
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  width: 1000px;
   justify-content: center;
 }
 
 .burger__card {
   display: flex;
-  width: 400px;
+  width: 40%;
   border: 1px solid rgba(158, 158, 158, 0.3);
   border-radius: 10px;
   padding: 25px;
