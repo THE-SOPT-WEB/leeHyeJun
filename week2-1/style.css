@@ -1,14 +1,27 @@
+@font-face {
+  font-family: "KyoboHand";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/KyoboHand.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: "KyoboHand";
+}
+
+body {
+  background-image: url("./assets/배경화면.jpg");
 }
 
 button {
   background-color: transparent;
   border: none;
-  border-radius: 8px;
-  background-color: #bc9bfd;
+  border-radius: 15px;
+  background-color: #eb222a;
   padding: 5px 10px;
   color: white;
 }
@@ -31,15 +44,17 @@ header {
   color: white;
   padding: 5px 10px;
   margin-bottom: 15px;
-  background-color: #8040ff;
+  background-color: #26a44c;
 }
 
 header > h1 {
+  font-weight: lighter;
   font-size: 24px;
 }
 
 header > h2 {
-  font-size: 18px;
+  font-weight: lighter;
+  font-size: 20px;
 }
 
 main {
@@ -54,7 +69,7 @@ section.scoreBoard {
   text-align: center;
 
   color: white;
-  background-color: #bc9bfd;
+  background-color: #eb222a;
   padding: 10px;
 }
 
@@ -73,8 +88,9 @@ div.imageBoard {
 div.imageBoard > img {
   width: 100%;
   max-height: 100%;
-  border-radius: 18px;
-  border: 1px solid #8040ff;
+  border-radius: 15px;
+  border: 1px solid rgb(183, 183, 183);
+  background-color: rgba(255, 255, 255, 0.6);
 }
 
 .modal.hide {
@@ -100,7 +116,7 @@ div.imageBoard > img {
   transform: translate(-50%, -50%);
 
   background-color: white;
-  border-radius: 18px;
+  border-radius: 15px;
   padding: 15px;
 
   display: flex;
@@ -109,7 +125,7 @@ div.imageBoard > img {
 }
 
 .answer > header {
-  border-radius: 18px;
+  border-radius: 15px;
 }
 
 .answer__list {
@@ -122,13 +138,14 @@ div.imageBoard > img {
 .answer__list > li {
   width: fit-content;
   padding: 10px;
+  margin-bottom: 10px;
 
-  border-radius: 34px;
+  border-radius: 15px;
 
-  font-size: 14px;
-  color: white;
+  font-size: 16px;
+  color: black;
 
-  background-color: #f88dd8;
+  background-color: #fdd865;
 
   list-style: none;
 }
@@ -137,13 +154,15 @@ div.imageBoard > img {
   position: relative;
   width: 100%;
   display: flex;
-  padding: 5px 10px;
+  padding: 20px 10px;
+  border-top: 1px solid rgb(235, 235, 235);
+  background-color: rgba(255, 255, 255, 0.6);
 }
 
 .buttonList > button {
   margin: 0 auto;
   width: 50%;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 @keyframes score {

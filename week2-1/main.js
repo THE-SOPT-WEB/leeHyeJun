@@ -1,8 +1,8 @@
-import pic1 from "./assets/김규민.jpeg";
-import pic2 from "./assets/전희선.jpeg";
-import pic3 from "./assets/서혜은.jpg";
-import pic4 from "./assets/황주희.jpeg";
-import pic5 from "./assets/백지연.png";
+import pic1 from "./assets/짱구.png";
+import pic2 from "./assets/유리.png";
+import pic3 from "./assets/맹구.png";
+import pic4 from "./assets/훈이.png";
+import pic5 from "./assets/철수.png";
 
 const $ = (selector) => document.querySelector(selector);
 
@@ -11,32 +11,38 @@ let currentStep = 0;
 const quizList = [
   {
     src: pic1,
-    answer: "김규민",
+    answer: "짱구",
   },
   {
     src: pic2,
-    answer: "전희선",
+    answer: "유리",
   },
   {
     src: pic3,
-    answer: "서혜은",
+    answer: "맹구",
   },
   {
     src: pic4,
-    answer: "황주희",
+    answer: "훈이",
   },
   {
     src: pic5,
-    answer: "백지연",
+    answer: "철수",
   },
 ];
 
 function initGame({ score, answer, image }) {
-  console.log(score, image, answer);
   currentStep = 0;
   score.innerText = 0;
 
   image.src = quizList[currentStep].src;
+}
+
+function resetGame(gameInfo) {
+  const resetBtn = $(".buttonList__shuffle");
+  resetBtn.addEventListener("click", () => {
+    initGame(gameInfo);
+  });
 }
 
 function showModal(modalContent, keepOpen) {
@@ -60,7 +66,7 @@ function goNextStep(score, image) {
     return;
   }
 
-  showModal("나를 알아주다니 고마워!");
+  showModal("딩동댕!");
   image.src = quizList[currentStep].src;
 }
 
@@ -72,7 +78,7 @@ function attachEvent({ score, answer, image }) {
       if (currentAnswer === realAnswer) {
         goNextStep(score, image);
       } else {
-        showModal(`나는 ${currentAnswer}가 아니야!!`);
+        showModal(`땡! 나는 ${currentAnswer}가 아니야`);
       }
     }
   });
@@ -81,6 +87,7 @@ function attachEvent({ score, answer, image }) {
 function gameManager(gameInfo) {
   initGame(gameInfo);
   attachEvent(gameInfo);
+  resetGame(gameInfo);
 }
 
 window.onload = () => {
