@@ -74,8 +74,7 @@ section.scoreBoard {
 }
 
 section.scoreBoard.scored {
-  animation: score 0.5s ease-in-out infinite;
-  color: rgb(255, 0, 0);
+  animation: score 1.5s ease-in-out;
 }
 
 div.imageBoard {
@@ -167,14 +166,27 @@ div.imageBoard > img {
 
 @keyframes score {
   0% {
-    transform: scale(1);
+    background-color: #ff2a2a;
   }
-
-  50% {
-    transform: scale(1.25);
+  15% {
+    background-color: #ff7a2a;
   }
-
+  30% {
+    background-color: #ffc52a;
+  }
+  45% {
+    background-color: #43ff2a;
+  }
+  60% {
+    background-color: #2a89ff;
+  }
+  75% {
+    background-color: #202082;
+  }
+  90% {
+    background-color: #6b2aff;
+  }
   100% {
-    transform: scale(1.5);
+    background-color: #e82aff;
   }
 }

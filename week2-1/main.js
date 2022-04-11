@@ -54,7 +54,11 @@ function showModal(modalContent, keepOpen) {
   if (keepOpen) return;
   setTimeout(() => {
     modal.classList.add("hide");
-  }, 500);
+  }, 1500);
+
+  window.addEventListener("click", (e) => {
+    e.target === modal ? modal.classList.add("hide") : false;
+  });
 }
 
 function goNextStep(score, image) {
@@ -66,8 +70,13 @@ function goNextStep(score, image) {
     return;
   }
 
-  showModal("딩동댕!");
   image.src = quizList[currentStep].src;
+
+  const scoreBoard = $(".scoreBoard");
+  scoreBoard.classList.add("scored");
+  setTimeout(() => {
+    scoreBoard.classList.remove("scored");
+  }, 1500);
 }
 
 function attachEvent({ score, answer, image }) {
@@ -81,6 +90,9 @@ function attachEvent({ score, answer, image }) {
         showModal(`땡! 나는 ${currentAnswer}가 아니야`);
       }
     }
+  });
+  image.addEventListener("load", (e) => {
+    showModal("호호이~ 이미지 로딩중!");
   });
 }
 
