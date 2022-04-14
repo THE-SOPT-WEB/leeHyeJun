@@ -1,0 +1,46 @@
+.burger {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.burger__card {
+  display: flex;
+  width: 40%;
+  border: 1px solid rgba(158, 158, 158, 0.3);
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 5px 5px 5px rgb(158, 158, 158);
+  transition: background-color 0.5s ease-in-out, transform 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.burger__card:hover {
+  transform: scale(1.03);
+  background-color: var(--main-color);
+}
+
+.burger__card > img {
+  width: 200px;
+}
+
+.burger__name {
+  font-size: 30px;
+  padding: 20px 0px 10px 0px;
+}
+
+.burger__price {
+  font-size: 23px;
+  padding-bottom: 15px;
+}
+
+.burger__desc {
+  font-size: 15px;
+}
+
+@media screen and (max-width: 1350px) {
+  .burger__card {
+    width: 400px;
+  }
+}

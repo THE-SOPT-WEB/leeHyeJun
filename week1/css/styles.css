@@ -1,0 +1,27 @@
+@import "reset.css";
+@import "variables.css";
+
+/* Componenets */
+@import "components/header.css";
+@import "components/side-bar.css";
+@import "components/burger.css";
+@import "components/cart.css";
+
+@font-face {
+  font-family: "SuncheonB";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/SuncheonB.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: "SuncheonB";
+}
+
+.main {
+  display: flex;
+  box-sizing: border-box;
+  margin-bottom: 50px;
+  justify-content: space-around;
+}
