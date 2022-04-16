@@ -2,3 +2,4 @@
 ## 🟣과제🟣 
 + [1주차] 햄식이를 도와줘! [PR](https://github.com/THE-SOPT-WEB/leeHyeJun/pull/1)
 + [2주차-1] 내가 누구게? [PR](https://github.com/THE-SOPT-WEB/leeHyeJun/pull/3)
++ [2주차-2] 햄식이는 떠났습니다 [PR](https://github.com/THE-SOPT-WEB/leeHyeJun/pull/4)
