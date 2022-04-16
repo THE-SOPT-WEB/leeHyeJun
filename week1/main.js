@@ -93,6 +93,7 @@ function attachEvent({ cartList, burgerCard, orderBtn, cancelBtn }) {
     Array.from(cartList.children).forEach((list) => {
       list.remove();
     });
+    calcTotalPrice(cartList);
   });
 }
 
