@@ -1,6 +1,7 @@
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => document.querySelectorAll(selector);
 
+// 이미 장바구니에 있는 아이템인지 검사
 function isInCart(cartList, burgerName) {
   const children = cartList.childNodes;
   for (let i = 0; i < children.length; i++)
@@ -8,12 +9,14 @@ function isInCart(cartList, burgerName) {
   return false;
 }
 
+// 장바구니 아이템 삭제
 function delCartItem(cartList, burgerName, btn) {
   if (isInCart(cartList, burgerName)) {
     btn.parentElement.remove();
   }
 }
 
+// 장바구니 아이템 추가
 function addCartItem(cartList, burgerName, burgerPrice) {
   const tagName = ["span", "input", "span", "button"];
   const elems = [];
@@ -46,6 +49,7 @@ function parsePriceToNumber(price) {
   return +removedComma;
 }
 
+// 누적 금액 계산
 function calcTotalPrice(cartList) {
   let totalPrice = 0;
   const children = cartList.childNodes;
@@ -72,6 +76,7 @@ function showModal(modalContent) {
 }
 
 function attachEvent({ cartList, burgerCard, orderBtn, cancelBtn }) {
+  // 햄버거 카드에 클릭시 장바구니에 추가
   burgerCard.forEach((burger) => {
     burger.addEventListener("click", () => {
       const burgerName = burger.querySelector(".burger__name").innerText;
