@@ -9,11 +9,11 @@
   top: 30px;
 }
 
-.cart__title > h2 {
+.cart__item > h2 {
   font-size: 25px;
 }
 
-.cart__title,
+.cart__item,
 .cart__total {
   width: 200px;
   padding: 10px 10px 15px 10px;
@@ -44,4 +44,15 @@
 
 .cart__button button:hover {
   background-color: var(--main-color);
+}
+
+.cart__list > li > * {
+  width: 20px;
+  margin: 10px 10px 0px 0px;
+  text-align: center;
+}
+
+.cart__list > li > button {
+  border: none;
+  background-color: transparent;
 }
