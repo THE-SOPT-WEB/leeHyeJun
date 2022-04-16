@@ -1,0 +1,192 @@
+@font-face {
+  font-family: "KyoboHand";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/KyoboHand.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "KyoboHand";
+}
+
+body {
+  background-image: url("./assets/배경화면.jpg");
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  border-radius: 15px;
+  background-color: #eb222a;
+  padding: 5px 10px;
+  color: white;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+hr {
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: unset;
+}
+
+header {
+  text-align: center;
+  color: white;
+  padding: 5px 10px;
+  margin-bottom: 15px;
+  background-color: #26a44c;
+}
+
+header > h1 {
+  font-weight: lighter;
+  font-size: 24px;
+}
+
+header > h2 {
+  font-weight: lighter;
+  font-size: 20px;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+section.scoreBoard {
+  width: 100%;
+  text-align: center;
+
+  color: white;
+  background-color: #eb222a;
+  padding: 10px;
+}
+
+section.scoreBoard.scored {
+  animation: score 1.5s ease-in-out;
+}
+
+div.imageBoard {
+  padding: 15px;
+  height: 350px;
+  display: flex;
+  align-items: center;
+}
+
+div.imageBoard > img {
+  width: 100%;
+  max-height: 100%;
+  border-radius: 15px;
+  border: 1px solid rgb(183, 183, 183);
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.modal.hide {
+  display: none;
+}
+
+.modal {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal__content {
+  width: fit-content;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  background-color: white;
+  border-radius: 15px;
+  padding: 15px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.answer > header {
+  border-radius: 15px;
+}
+
+.answer__list {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 5px;
+}
+
+.answer__list > li {
+  width: fit-content;
+  padding: 10px;
+  margin-bottom: 10px;
+
+  border-radius: 15px;
+
+  font-size: 16px;
+  color: black;
+
+  background-color: #fdd865;
+
+  list-style: none;
+}
+
+.buttonList {
+  position: relative;
+  width: 100%;
+  display: flex;
+  padding: 20px 10px;
+  border-top: 1px solid rgb(235, 235, 235);
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.buttonList > button {
+  margin: 0 auto;
+  width: 50%;
+  font-size: 18px;
+}
+
+@keyframes score {
+  0% {
+    background-color: #ff2a2a;
+  }
+  15% {
+    background-color: #ff7a2a;
+  }
+  30% {
+    background-color: #ffc52a;
+  }
+  45% {
+    background-color: #43ff2a;
+  }
+  60% {
+    background-color: #2a89ff;
+  }
+  75% {
+    background-color: #202082;
+  }
+  90% {
+    background-color: #6b2aff;
+  }
+  100% {
+    background-color: #e82aff;
+  }
+}
