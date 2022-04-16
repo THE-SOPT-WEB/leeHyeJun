@@ -60,7 +60,19 @@ function calcTotalPrice(cartList) {
   $(".cart__total > p").innerText = totalPrice.toLocaleString();
 }
 
-function attachEvent({ cartList, burgerCard, cancelBtn }) {
+function showModal(modalContent) {
+  const modal = $(".modal");
+  const modalBody = $(".modal__body");
+  const noBtn = $(".modal__close-btn");
+
+  modalBody.innerHTML = modalContent;
+  modal.classList.remove("hide");
+  noBtn.addEventListener("click", () => {
+    modal.classList.add("hide");
+  });
+}
+
+function attachEvent({ cartList, burgerCard, orderBtn, cancelBtn }) {
   burgerCard.forEach((burger) => {
     burger.addEventListener("click", () => {
       const burgerName = burger.querySelector(".burger__name").innerText;
@@ -73,6 +85,11 @@ function attachEvent({ cartList, burgerCard, cancelBtn }) {
       calcTotalPrice(cartList);
     });
   });
+
+  orderBtn.addEventListener("click", () => {
+    showModal("정말 주문하시겠어요?");
+  });
+
   cancelBtn.addEventListener("click", () => {
     Array.from(cartList.children).forEach((list) => {
       list.remove();
@@ -88,6 +105,7 @@ window.onload = () => {
   cartManager({
     cartList: $("ul.cart__list"),
     burgerCard: $$(".burger__card"),
+    orderBtn: $(".cart__button > button:nth-child(1)"),
     cancelBtn: $(".cart__button > button:nth-child(2)"),
   });
 };
