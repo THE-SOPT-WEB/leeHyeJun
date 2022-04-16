@@ -1,7 +1,19 @@
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => document.querySelectorAll(selector);
 
-let burgerList = [];
+function isInCart(cartList, burgerName) {
+  const children = cartList.childNodes;
+  for (let i = 0; i < children.length; i++)
+    if (burgerName === children[i].firstChild.innerText) return true;
+  return false;
+}
+
+// function delCartItem(cartList, btn) {
+//   const burgerName = btn.parentElement.firstChild.innerText;
+//   if (isInCart(cartList, burgerName)) {
+//     btn.parentElement.remove();
+//   }
+// }
 
 function addCartItem(cartList, burgerName, burgerPrice) {
   const tagName = ["span", "input", "span", "button"];
@@ -20,16 +32,16 @@ function addCartItem(cartList, burgerName, burgerPrice) {
   elems[3].setAttribute("type", "button");
   elems[3].classList.add(`cart__list--${burgerName}-del`);
 
+  elems[3].addEventListener("click", (e) => {
+    // delCartItem(cartList, burgerName);
+    if (isInCart(cartList, burgerName)) {
+      e.target.parentElement.remove();
+    }
+  });
+
   const item = document.createElement("li");
   elems.forEach((elem) => item.appendChild(elem));
   cartList.appendChild(item);
-}
-
-function isInCart(cartList, burgerName) {
-  const children = cartList.childNodes;
-  for (let i = 0; i < children.length; i++)
-    if (burgerName === children[i].firstChild.innerText) return true;
-  return false;
 }
 
 function attachEvent({ cartList, burgerCard }) {
@@ -40,10 +52,7 @@ function attachEvent({ cartList, burgerCard }) {
 
       if (isInCart(cartList, burgerName))
         $(`.cart__list--${burgerName}-qty`).value++;
-      else {
-        burgerList.push(burgerName);
-        addCartItem(cartList, burgerName, burgerPrice);
-      }
+      else addCartItem(cartList, burgerName, burgerPrice);
     });
   });
 }
