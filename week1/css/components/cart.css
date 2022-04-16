@@ -15,7 +15,7 @@
 
 .cart__item,
 .cart__total {
-  width: 200px;
+  width: 220px;
   padding: 10px 10px 15px 10px;
   border-bottom: 1px solid white;
   margin-bottom: 20px;
@@ -46,13 +46,27 @@
   background-color: var(--main-color);
 }
 
-.cart__list > li > * {
+.cart__list > li {
+  display: flex;
+  margin-top: 10px;
+}
+
+.cart__list > li > span:nth-child(1) {
+  flex: 3;
+}
+
+.cart__list > li > span:nth-child(3) {
+  flex: 2;
+}
+
+.cart__list > li > input {
+  flex: 0.5;
   width: 20px;
-  margin: 10px 10px 0px 0px;
-  text-align: center;
+  margin-right: 15px;
 }
 
 .cart__list > li > button {
+  flex: 0.5;
   border: none;
   background-color: transparent;
 }
