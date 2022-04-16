@@ -60,7 +60,7 @@ function calcTotalPrice(cartList) {
   $(".cart__total > p").innerText = totalPrice.toLocaleString();
 }
 
-function attachEvent({ cartList, burgerCard }) {
+function attachEvent({ cartList, burgerCard, cancelBtn }) {
   burgerCard.forEach((burger) => {
     burger.addEventListener("click", () => {
       const burgerName = burger.querySelector(".burger__name").innerText;
@@ -73,6 +73,11 @@ function attachEvent({ cartList, burgerCard }) {
       calcTotalPrice(cartList);
     });
   });
+  cancelBtn.addEventListener("click", () => {
+    Array.from(cartList.children).forEach((list) => {
+      list.remove();
+    });
+  });
 }
 
 function cartManager(cartInfo) {
@@ -83,5 +88,6 @@ window.onload = () => {
   cartManager({
     cartList: $("ul.cart__list"),
     burgerCard: $$(".burger__card"),
+    cancelBtn: $(".cart__button > button:nth-child(2)"),
   });
 };
