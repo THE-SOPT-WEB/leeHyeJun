@@ -26,3 +26,12 @@ body {
   margin-bottom: 50px;
   justify-content: space-around;
 }
+
+.complete {
+  display: flex;
+  background-color: var(--main-color);
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+}
