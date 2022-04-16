@@ -8,12 +8,12 @@ function isInCart(cartList, burgerName) {
   return false;
 }
 
-// function delCartItem(cartList, btn) {
-//   const burgerName = btn.parentElement.firstChild.innerText;
-//   if (isInCart(cartList, burgerName)) {
-//     btn.parentElement.remove();
-//   }
-// }
+function delCartItem(cartList, btn) {
+  const burgerName = btn.parentElement.firstChild.innerText;
+  if (isInCart(cartList, burgerName)) {
+    btn.parentElement.remove();
+  }
+}
 
 function addCartItem(cartList, burgerName, burgerPrice) {
   const tagName = ["span", "input", "span", "button"];
@@ -25,23 +25,39 @@ function addCartItem(cartList, burgerName, burgerPrice) {
   elems[0].innerText = burgerName;
   elems[0].classList.add(`cart__list--${burgerName}`);
   elems[1].setAttribute("value", 1);
+  elems[1].classList.add(`cart__list--qty`);
   elems[1].classList.add(`cart__list--${burgerName}-qty`);
   elems[2].innerText = burgerPrice;
-  elems[2].classList.add(`cart__list--${burgerName}-price`);
+  elems[2].classList.add(`cart__list--price`);
   elems[3].innerText = "❌";
   elems[3].setAttribute("type", "button");
   elems[3].classList.add(`cart__list--${burgerName}-del`);
 
   elems[3].addEventListener("click", (e) => {
-    // delCartItem(cartList, burgerName);
-    if (isInCart(cartList, burgerName)) {
-      e.target.parentElement.remove();
-    }
+    delCartItem(cartList, burgerName);
   });
 
   const item = document.createElement("li");
   elems.forEach((elem) => item.appendChild(elem));
   cartList.appendChild(item);
+}
+
+function parsePriceToNumber(price) {
+  const removedComma = price.slice(0, -1).replace(/\D/g, "");
+  return +removedComma;
+}
+
+function calcTotalPrice(cartList) {
+  let totalPrice = 0;
+  const children = cartList.childNodes;
+  for (let i = 0; i < children.length; i++) {
+    const price = parsePriceToNumber(
+      children[i].querySelector(`.cart__list--price`).innerText
+    );
+    const qty = children[i].querySelector(`.cart__list--qty`).value;
+    totalPrice += price * qty;
+  }
+  $(".cart__total > p").innerText = totalPrice.toLocaleString();
 }
 
 function attachEvent({ cartList, burgerCard }) {
@@ -53,6 +69,8 @@ function attachEvent({ cartList, burgerCard }) {
       if (isInCart(cartList, burgerName))
         $(`.cart__list--${burgerName}-qty`).value++;
       else addCartItem(cartList, burgerName, burgerPrice);
+
+      calcTotalPrice(cartList);
     });
   });
 }
