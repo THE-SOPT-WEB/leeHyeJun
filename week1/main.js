@@ -8,8 +8,7 @@ function isInCart(cartList, burgerName) {
   return false;
 }
 
-function delCartItem(cartList, btn) {
-  const burgerName = btn.parentElement.firstChild.innerText;
+function delCartItem(cartList, burgerName, btn) {
   if (isInCart(cartList, burgerName)) {
     btn.parentElement.remove();
   }
@@ -34,7 +33,7 @@ function addCartItem(cartList, burgerName, burgerPrice) {
   elems[3].classList.add(`cart__list--${burgerName}-del`);
 
   elems[3].addEventListener("click", (e) => {
-    delCartItem(cartList, burgerName);
+    delCartItem(cartList, burgerName, e.target);
   });
 
   const item = document.createElement("li");
