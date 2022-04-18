@@ -13,6 +13,7 @@ function isInCart(cartList, burgerName) {
 function delCartItem(cartList, burgerName, btn) {
   if (isInCart(cartList, burgerName)) {
     btn.parentElement.remove();
+    calcTotalPrice(cartList);
   }
 }
 
