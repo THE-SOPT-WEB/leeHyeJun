@@ -9,6 +9,10 @@
   top: 110px;
 }
 
+.cart.shake {
+  animation: shake 0.3s ease-in-out;
+}
+
 .cart__item > h2 {
   font-size: 25px;
 }
@@ -70,4 +74,13 @@
   border: none;
   background-color: transparent;
   cursor: pointer;
+}
+
+@keyframes shake {
+  25% {
+    transform: translateX(-10px);
+  }
+  75% {
+    transform: translateX(10px);
+  }
 }

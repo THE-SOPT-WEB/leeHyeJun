@@ -83,6 +83,13 @@ function attachEvent({ cartList, burgerCard, orderBtn, cancelBtn }) {
       const burgerName = burger.querySelector(".burger__name").innerText;
       const burgerPrice = burger.querySelector(".burger__price").innerText;
 
+      // 아이템 추가시 흔들리는 애니메이션
+      const cart = $(".cart");
+      cart.classList.add("shake");
+      setTimeout(() => {
+        cart.classList.remove("shake");
+      }, 300);
+
       if (isInCart(cartList, burgerName))
         $(`.cart__list--${burgerName}-qty`).value++;
       else addCartItem(cartList, burgerName, burgerPrice);
