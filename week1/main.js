@@ -27,6 +27,7 @@ function addCartItem(cartList, burgerName, burgerPrice) {
 
   elems[0].innerText = burgerName;
   elems[0].classList.add(`cart__list--${burgerName}`);
+  elems[1].setAttribute("type", "number");
   elems[1].setAttribute("value", 1);
   elems[1].classList.add(`cart__list--qty`);
   elems[1].classList.add(`cart__list--${burgerName}-qty`);
@@ -36,6 +37,9 @@ function addCartItem(cartList, burgerName, burgerPrice) {
   elems[3].setAttribute("type", "button");
   elems[3].classList.add(`cart__list--${burgerName}-del`);
 
+  elems[1].addEventListener("change", () => {
+    calcTotalPrice(cartList);
+  });
   elems[3].addEventListener("click", (e) => {
     delCartItem(cartList, burgerName, e.target);
   });
