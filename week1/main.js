@@ -19,34 +19,14 @@ function delCartItem(cartList, burgerName, btn) {
 
 // 장바구니 아이템 추가
 function addCartItem(cartList, burgerName, burgerPrice) {
-  const tagName = ["span", "input", "span", "button"];
-  const elems = [];
-  tagName.forEach((name, index) => {
-    elems[index] = document.createElement(name);
-  });
+  const burgerLi = document.createElement("li");
 
-  elems[0].innerText = burgerName;
-  elems[0].classList.add(`cart__list--${burgerName}`);
-  elems[1].setAttribute("type", "number");
-  elems[1].setAttribute("value", 1);
-  elems[1].classList.add(`cart__list--qty`);
-  elems[1].classList.add(`cart__list--${burgerName}-qty`);
-  elems[2].innerText = burgerPrice;
-  elems[2].classList.add(`cart__list--price`);
-  elems[3].innerText = "❌";
-  elems[3].setAttribute("type", "button");
-  elems[3].classList.add(`cart__list--${burgerName}-del`);
+  burgerLi.insertAdjacentHTML(
+    "afterbegin",
+    `<span class="cart__list--${burgerName}">${burgerName}</span><input class="cart__list--qty cart__list--${burgerName}-qty" type="number" value="1" /><span class="cart__list--price">${burgerPrice}</span><button class="cart__list--del cart__list--${burgerName}-del" type="button">❌</button>`
+  );
 
-  elems[1].addEventListener("change", () => {
-    calcTotalPrice(cartList);
-  });
-  elems[3].addEventListener("click", (e) => {
-    delCartItem(cartList, burgerName, e.target);
-  });
-
-  const item = document.createElement("li");
-  elems.forEach((elem) => item.appendChild(elem));
-  cartList.appendChild(item);
+  cartList.appendChild(burgerLi);
 }
 
 function parsePriceToNumber(price) {
@@ -100,6 +80,14 @@ function attachEvent({ cartList, burgerCard, orderBtn, cancelBtn }) {
 
       calcTotalPrice(cartList);
     });
+  });
+
+  $(".cart__list--qty").addEventListener("change", () => {
+    calcTotalPrice(cartList);
+  });
+
+  $(".cart__list--del").addEventListener("click", (e) => {
+    delCartItem(cartList, burgerName, e.target);
   });
 
   orderBtn.addEventListener("click", () => {
