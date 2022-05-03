@@ -37,13 +37,6 @@ function initGame({ score, image }) {
   image.src = quizList[currentStep].src;
 }
 
-// function resetGame(gameInfo) {
-//   const resetBtn = $(".buttonList__shuffle");
-//   resetBtn.addEventListener("click", () => {
-//     initGame(gameInfo);
-//   });
-// }
-
 function showModal(modalContent, keepOpen) {
   const modal = $(".modal");
   const modalBody = $(".modal__body");
@@ -54,10 +47,6 @@ function showModal(modalContent, keepOpen) {
   setTimeout(() => {
     modal.classList.add("hide");
   }, 1500);
-
-  window.addEventListener("click", (e) => {
-    e.target === modal ? modal.classList.add("hide") : false;
-  });
 }
 
 function goNextStep(score, image) {
@@ -97,6 +86,11 @@ function attachEvent({ score, answer, image }) {
 
   $(".buttonList__shuffle").addEventListener("click", () => {
     initGame({ score, image });
+  });
+
+  const modal = $(".modal");
+  modal.addEventListener("click", (e) => {
+    e.target === modal ? modal.classList.add("hide") : false;
   });
 }
 
