@@ -97,7 +97,7 @@ function attachEvent({ burgerSection, cartList }) {
 
   // 모달 닫기 버튼 클릭
   $(".modal__close-btn").addEventListener("click", () => {
-    modal.classList.add("hide");
+    $(".modal").classList.add("hide");
   });
 }
 
