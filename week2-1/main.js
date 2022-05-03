@@ -31,21 +31,25 @@ const quizList = [
   },
 ];
 
+// 게임(단계, 점수, 이미지) 초기화
 function initGame({ score, image }) {
   currentStep = 0;
   score.innerText = 0;
   image.src = quizList[currentStep].src;
 }
 
+// 모달 창 띄우기
 function showModal(modalContent) {
   $(".modal__body").innerHTML = modalContent;
   $(".modal").classList.remove("hide");
 }
 
+// 정답을 맞췄을 시 다음 단계 작업
 function goNextStep(score, image) {
   currentStep++;
   score.innerText = +score.innerText + 1;
 
+  // 퀴즈가 모두 끝난 경우
   if (currentStep === quizList.length) {
     showModal(`<a href="/">메인화면으로</a>`);
     return;
@@ -61,6 +65,7 @@ function goNextStep(score, image) {
 }
 
 function attachEvent({ score, answer, image }) {
+  // 답 클릭시 정답 판별
   answer.addEventListener("click", (e) => {
     if (e.target instanceof HTMLLIElement) {
       const currentAnswer = e.target.innerText;
@@ -71,14 +76,17 @@ function attachEvent({ score, answer, image }) {
     }
   });
 
+  // 이미지 로딩이 완료되면 모달 숨기기
   image.addEventListener("load", () => {
     modal.classList.add("hide");
   });
 
+  // 다시하기 클릭시
   $(".buttonList__shuffle").addEventListener("click", () => {
     initGame({ score, image });
   });
 
+  // 모달 바깥 부분 클릭시 모달 닫기
   const modal = $(".modal");
   modal.addEventListener("click", (e) => {
     e.target === modal ? modal.classList.add("hide") : false;
