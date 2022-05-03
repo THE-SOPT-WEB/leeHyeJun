@@ -1,5 +1,4 @@
 const $ = (selector) => document.querySelector(selector);
-const $$ = (selector) => document.querySelectorAll(selector);
 
 // 이미 장바구니에 있는 아이템인지 검사
 function isInCart(cartList, burgerName) {
@@ -60,32 +59,35 @@ function showModal(modalContent) {
   $(".modal").classList.remove("hide");
 }
 
-function attachEvent({ cartList, burgerCard, orderBtn, cancelBtn }) {
-  // 햄버거 카드에 클릭시 장바구니에 추가
-  burgerCard.forEach((burger) => {
-    burger.addEventListener("click", () => {
-      const burgerName = burger.querySelector(".burger__name").innerText;
-      const burgerPrice = burger.querySelector(".burger__price").innerText;
+function attachEvent({ burgerSection, cartList, orderBtn, cancelBtn }) {
+  // 햄버거 카드 클릭시 장바구니에 추가 (이벤트 버블링)
+  burgerSection.addEventListener("click", (e) => {
+    const burgerCard = e.target.closest("article");
+    const burgerName = burgerCard.querySelector(".burger__name").innerText;
+    const burgerPrice = burgerCard.querySelector(".burger__price").innerText;
 
-      // 아이템 추가시 흔들리는 애니메이션
-      const cart = $(".cart");
-      cart.classList.add("shake");
-      setTimeout(() => {
-        cart.classList.remove("shake");
-      }, 300);
+    // 아이템 추가시 흔들리는 애니메이션
+    const cart = $(".cart");
+    cart.classList.add("shake");
+    setTimeout(() => {
+      cart.classList.remove("shake");
+    }, 300);
 
-      if (isInCart(cartList, burgerName))
-        $(`.cart__list--${burgerName}-qty`).value++;
-      else addCartItem(cartList, burgerName, burgerPrice);
+    // 장바구니 안에 이미 있는 햄버거인지 확인 후 수량 증가 혹은 추가
+    if (isInCart(cartList, burgerName))
+      $(`.cart__list--${burgerName}-qty`).value++;
+    else addCartItem(cartList, burgerName, burgerPrice);
 
-      calcTotalPrice(cartList);
-    });
+    // 누적 금액 계산
+    calcTotalPrice(cartList);
   });
 
+  // 장바구니 주문하기 버튼 클릭
   orderBtn.addEventListener("click", () => {
     showModal("정말 주문하시겠어요?");
   });
 
+  // 장바구니 취소하기 버튼 클릭
   cancelBtn.addEventListener("click", () => {
     Array.from(cartList.children).forEach((list) => {
       list.remove();
@@ -93,6 +95,7 @@ function attachEvent({ cartList, burgerCard, orderBtn, cancelBtn }) {
     calcTotalPrice(cartList);
   });
 
+  // 모달 닫기 버튼 클릭
   $(".modal__close-btn").addEventListener("click", () => {
     modal.classList.add("hide");
   });
@@ -104,8 +107,8 @@ function cartManager(cartInfo) {
 
 window.onload = () => {
   cartManager({
+    burgerSection: $("section.burger"),
     cartList: $("ul.cart__list"),
-    burgerCard: $$(".burger__card"),
     orderBtn: $(".cart__button > button:nth-child(1)"),
     cancelBtn: $(".cart__button > button:nth-child(2)"),
   });
