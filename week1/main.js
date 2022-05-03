@@ -59,8 +59,8 @@ function showModal(modalContent) {
   $(".modal").classList.remove("hide");
 }
 
-function attachEvent({ burgerSection, cartList, orderBtn, cancelBtn }) {
-  // 햄버거 카드 클릭시 장바구니에 추가 (이벤트 버블링)
+function attachEvent({ burgerSection, cartList }) {
+  // 햄버거 카드 클릭시 장바구니에 추가 (이벤트 위임)
   burgerSection.addEventListener("click", (e) => {
     const burgerCard = e.target.closest("article");
     const burgerName = burgerCard.querySelector(".burger__name").innerText;
@@ -83,12 +83,12 @@ function attachEvent({ burgerSection, cartList, orderBtn, cancelBtn }) {
   });
 
   // 장바구니 주문하기 버튼 클릭
-  orderBtn.addEventListener("click", () => {
+  $(".cart__order-btn").addEventListener("click", () => {
     showModal("정말 주문하시겠어요?");
   });
 
   // 장바구니 취소하기 버튼 클릭
-  cancelBtn.addEventListener("click", () => {
+  $(".cart__cancel-btn").addEventListener("click", () => {
     Array.from(cartList.children).forEach((list) => {
       list.remove();
     });
@@ -109,7 +109,5 @@ window.onload = () => {
   cartManager({
     burgerSection: $("section.burger"),
     cartList: $("ul.cart__list"),
-    orderBtn: $(".cart__button > button:nth-child(1)"),
-    cancelBtn: $(".cart__button > button:nth-child(2)"),
   });
 };
