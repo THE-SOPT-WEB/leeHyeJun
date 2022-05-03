@@ -6,6 +6,7 @@
 @import "components/side-bar.css";
 @import "components/burger.css";
 @import "components/cart.css";
+@import "components/modal.css";
 
 @font-face {
   font-family: "SuncheonB";
@@ -24,4 +25,13 @@ body {
   box-sizing: border-box;
   margin-bottom: 50px;
   justify-content: space-around;
+}
+
+.complete {
+  display: flex;
+  background-color: var(--main-color);
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
 }

@@ -6,16 +6,20 @@
   border-radius: 10px;
   color: white;
   position: sticky;
-  top: 30px;
+  top: 110px;
 }
 
-.cart__title > h2 {
+.cart.shake {
+  animation: shake 0.3s ease-in-out;
+}
+
+.cart__item > h2 {
   font-size: 25px;
 }
 
-.cart__title,
+.cart__item,
 .cart__total {
-  width: 200px;
+  width: 220px;
   padding: 10px 10px 15px 10px;
   border-bottom: 1px solid white;
   margin-bottom: 20px;
@@ -44,4 +48,39 @@
 
 .cart__button button:hover {
   background-color: var(--main-color);
+}
+
+.cart__list > li {
+  display: flex;
+  margin-top: 10px;
+}
+
+.cart__list > li > span:nth-child(1) {
+  flex: 3;
+}
+
+.cart__list > li > span:nth-child(3) {
+  flex: 2;
+}
+
+.cart__list > li > input {
+  flex: 0.5;
+  width: 25px;
+  margin-right: 15px;
+}
+
+.cart__list > li > button {
+  flex: 0.5;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+@keyframes shake {
+  25% {
+    transform: translateX(-10px);
+  }
+  75% {
+    transform: translateX(10px);
+  }
 }
