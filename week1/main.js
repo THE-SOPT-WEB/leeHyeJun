@@ -2,9 +2,9 @@ const $ = (selector) => document.querySelector(selector);
 
 // 이미 장바구니에 있는 아이템인지 검사
 function isInCart(cartList, burgerName) {
-  const children = cartList.childNodes;
-  for (let i = 0; i < children.length; i++)
-    if (burgerName === children[i].firstChild.innerText) return true;
+  const burgerNames = cartList.querySelectorAll(".cart__list--name");
+  for (let i = 0; i < burgerNames.length; i++)
+    if (burgerName === burgerNames[i].innerText) return true;
   return false;
 }
 
@@ -19,12 +19,10 @@ function delCartItem(cartList, burgerName, btn) {
 // 장바구니 아이템 추가
 function addCartItem(cartList, burgerName, burgerPrice) {
   const burgerLi = document.createElement("li");
-
   burgerLi.insertAdjacentHTML(
     "afterbegin",
-    `<span class="cart__list--${burgerName}">${burgerName}</span><input class="cart__list--qty cart__list--${burgerName}-qty" type="number" value="1" /><span class="cart__list--price">${burgerPrice}</span><button class="cart__list--del cart__list--${burgerName}-del" type="button">❌</button>`
+    `<span class="cart__list--name cart__list--${burgerName}">${burgerName}</span><input class="cart__list--qty cart__list--${burgerName}-qty" type="number" value="1" /><span class="cart__list--price">${burgerPrice}</span><button class="cart__list--del cart__list--${burgerName}-del" type="button">❌</button>`
   );
-
   cartList.appendChild(burgerLi);
 
   $(".cart__list--qty").addEventListener("change", () => {
@@ -54,6 +52,7 @@ function calcTotalPrice(cartList) {
   $(".cart__total > p").innerText = totalPrice.toLocaleString();
 }
 
+// 모달 창 보여주기
 function showModal(modalContent) {
   $(".modal__body").innerHTML = modalContent;
   $(".modal").classList.remove("hide");
@@ -89,7 +88,8 @@ function attachEvent({ burgerSection, cartList }) {
 
   // 장바구니 취소하기 버튼 클릭
   $(".cart__cancel-btn").addEventListener("click", () => {
-    Array.from(cartList.children).forEach((list) => {
+    console.log(cartList.children);
+    cartList.children.forEach((list) => {
       list.remove();
     });
     calcTotalPrice(cartList);
@@ -101,12 +101,8 @@ function attachEvent({ burgerSection, cartList }) {
   });
 }
 
-function cartManager(cartInfo) {
-  attachEvent(cartInfo);
-}
-
 window.onload = () => {
-  cartManager({
+  attachEvent({
     burgerSection: $("section.burger"),
     cartList: $("ul.cart__list"),
   });
