@@ -27,6 +27,13 @@ function addCartItem(cartList, burgerName, burgerPrice) {
   );
 
   cartList.appendChild(burgerLi);
+
+  $(".cart__list--qty").addEventListener("change", () => {
+    calcTotalPrice(cartList);
+  });
+  $(".cart__list--del").addEventListener("click", (e) => {
+    delCartItem(cartList, burgerName, e.target);
+  });
 }
 
 function parsePriceToNumber(price) {
@@ -49,15 +56,8 @@ function calcTotalPrice(cartList) {
 }
 
 function showModal(modalContent) {
-  const modal = $(".modal");
-  const modalBody = $(".modal__body");
-  const noBtn = $(".modal__close-btn");
-
-  modalBody.innerHTML = modalContent;
-  modal.classList.remove("hide");
-  noBtn.addEventListener("click", () => {
-    modal.classList.add("hide");
-  });
+  $(".modal__body").innerHTML = modalContent;
+  $(".modal").classList.remove("hide");
 }
 
 function attachEvent({ cartList, burgerCard, orderBtn, cancelBtn }) {
@@ -82,14 +82,6 @@ function attachEvent({ cartList, burgerCard, orderBtn, cancelBtn }) {
     });
   });
 
-  $(".cart__list--qty").addEventListener("change", () => {
-    calcTotalPrice(cartList);
-  });
-
-  $(".cart__list--del").addEventListener("click", (e) => {
-    delCartItem(cartList, burgerName, e.target);
-  });
-
   orderBtn.addEventListener("click", () => {
     showModal("정말 주문하시겠어요?");
   });
@@ -99,6 +91,10 @@ function attachEvent({ cartList, burgerCard, orderBtn, cancelBtn }) {
       list.remove();
     });
     calcTotalPrice(cartList);
+  });
+
+  $(".modal__close-btn").addEventListener("click", () => {
+    modal.classList.add("hide");
   });
 }
 
