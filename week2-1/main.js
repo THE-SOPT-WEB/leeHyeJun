@@ -37,16 +37,9 @@ function initGame({ score, image }) {
   image.src = quizList[currentStep].src;
 }
 
-function showModal(modalContent, keepOpen) {
-  const modal = $(".modal");
-  const modalBody = $(".modal__body");
-  modalBody.innerHTML = modalContent;
-
-  modal.classList.remove("hide");
-  if (keepOpen) return;
-  setTimeout(() => {
-    modal.classList.add("hide");
-  }, 1500);
+function showModal(modalContent) {
+  $(".modal__body").innerHTML = modalContent;
+  $(".modal").classList.remove("hide");
 }
 
 function goNextStep(score, image) {
@@ -54,17 +47,17 @@ function goNextStep(score, image) {
   score.innerText = +score.innerText + 1;
 
   if (currentStep === quizList.length) {
-    showModal(`<a href="/">메인화면으로</a>`, true);
+    showModal(`<a href="/">메인화면으로</a>`);
     return;
   }
 
   image.src = quizList[currentStep].src;
-
   const scoreBoard = $(".scoreBoard");
   scoreBoard.classList.add("scored");
   setTimeout(() => {
     scoreBoard.classList.remove("scored");
   }, 1500);
+  showModal("호호이~ 이미지 로딩중!");
 }
 
 function attachEvent({ score, answer, image }) {
@@ -72,16 +65,14 @@ function attachEvent({ score, answer, image }) {
     if (e.target instanceof HTMLLIElement) {
       const currentAnswer = e.target.innerText;
       const realAnswer = quizList[currentStep].answer;
-      if (currentAnswer === realAnswer) {
-        goNextStep(score, image);
-      } else {
-        showModal(`땡! 나는 ${currentAnswer}가 아니야`);
-      }
+
+      if (currentAnswer === realAnswer) goNextStep(score, image);
+      else showModal(`땡! 나는 ${currentAnswer}가 아니야`);
     }
   });
 
-  image.addEventListener("load", (e) => {
-    showModal("호호이~ 이미지 로딩중!");
+  image.addEventListener("load", () => {
+    modal.classList.add("hide");
   });
 
   $(".buttonList__shuffle").addEventListener("click", () => {
