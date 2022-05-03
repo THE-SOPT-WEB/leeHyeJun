@@ -31,19 +31,18 @@ const quizList = [
   },
 ];
 
-function initGame({ score, answer, image }) {
+function initGame({ score, image }) {
   currentStep = 0;
   score.innerText = 0;
-
   image.src = quizList[currentStep].src;
 }
 
-function resetGame(gameInfo) {
-  const resetBtn = $(".buttonList__shuffle");
-  resetBtn.addEventListener("click", () => {
-    initGame(gameInfo);
-  });
-}
+// function resetGame(gameInfo) {
+//   const resetBtn = $(".buttonList__shuffle");
+//   resetBtn.addEventListener("click", () => {
+//     initGame(gameInfo);
+//   });
+// }
 
 function showModal(modalContent, keepOpen) {
   const modal = $(".modal");
@@ -91,15 +90,19 @@ function attachEvent({ score, answer, image }) {
       }
     }
   });
+
   image.addEventListener("load", (e) => {
     showModal("호호이~ 이미지 로딩중!");
+  });
+
+  $(".buttonList__shuffle").addEventListener("click", () => {
+    initGame({ score, image });
   });
 }
 
 function gameManager(gameInfo) {
   initGame(gameInfo);
   attachEvent(gameInfo);
-  resetGame(gameInfo);
 }
 
 window.onload = () => {
