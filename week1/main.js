@@ -2,9 +2,9 @@ const $ = (selector) => document.querySelector(selector);
 
 // 이미 장바구니에 있는 아이템인지 검사
 function isInCart(cartList, burgerName) {
-  const burgerNames = cartList.querySelectorAll(".cart__list--name");
-  for (let i = 0; i < burgerNames.length; i++)
-    if (burgerName === burgerNames[i].innerText) return true;
+  const nameList = cartList.querySelectorAll(".cart__list--name");
+  for (let i = 0; i < nameList.length; i++)
+    if (burgerName === nameList[i].innerText) return true;
   return false;
 }
 
@@ -40,13 +40,13 @@ function parsePriceToNumber(price) {
 
 // 누적 금액 계산
 function calcTotalPrice(cartList) {
+  const priceList = cartList.querySelectorAll(".cart__list--price");
+  const qtyList = cartList.querySelectorAll(".cart__list--qty");
+
   let totalPrice = 0;
-  const children = cartList.childNodes;
-  for (let i = 0; i < children.length; i++) {
-    const price = parsePriceToNumber(
-      children[i].querySelector(`.cart__list--price`).innerText
-    );
-    const qty = children[i].querySelector(`.cart__list--qty`).value;
+  for (let i = 0; i < priceList.length; i++) {
+    const price = parsePriceToNumber(priceList[i].innerText);
+    const qty = qtyList[i].value;
     totalPrice += price * qty;
   }
   $(".cart__total > p").innerText = totalPrice.toLocaleString();
