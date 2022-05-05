@@ -1,4 +1,5 @@
 import gameData from "../utils/gameData";
+import Fighter from "./Fighter";
 import React, { useRef, useState } from "react";
 
 function WorldCup() {
@@ -31,19 +32,7 @@ function WorldCup() {
     <React.Fragment>
       <h1>여우 월드컵</h1>
       {round.map((fighter) => {
-        return (
-          <>
-            <img
-              key={fighter.name}
-              src={fighter.img}
-              alt={fighter.name}
-              onClick={() => {
-                handleClick(fighter);
-              }}
-            />
-            <p>{fighter.name}</p>
-          </>
-        );
+        return <Fighter gameInfo={fighter} handleClick={handleClick} />;
       })}
     </React.Fragment>
   );
