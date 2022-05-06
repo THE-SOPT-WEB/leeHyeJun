@@ -2,6 +2,7 @@ import gameData from "../utils/gameData";
 import Fighter from "./Fighter";
 import React, { useRef, useState } from "react";
 import { Header, Main } from "../style";
+import vs from "../assets/vs.png";
 
 function WorldCup() {
   const winners = useRef([]);
@@ -36,6 +37,7 @@ function WorldCup() {
         {round.map((fighter) => {
           return <Fighter gameInfo={fighter} handleClick={handleClick} />;
         })}
+        <img src={vs} alt="vs" />
       </Main>
     </React.Fragment>
   );
