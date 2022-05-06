@@ -1,10 +1,11 @@
-import { Item } from "../style/style";
+import { Item, Image } from "../style/style";
 
 function Fighter(props) {
   const { gameInfo, handleClick } = props;
+
   return (
     <Item>
-      <img
+      <Image
         src={gameInfo.img}
         alt={gameInfo.name}
         onClick={() => {

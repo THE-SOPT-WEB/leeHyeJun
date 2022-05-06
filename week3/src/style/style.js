@@ -63,19 +63,6 @@ export const Item = styled.div`
   position: relative;
   margin: 4rem 5rem;
 
-  & > img {
-    width: 30rem;
-    height: 30rem;
-    border-radius: 15px;
-
-    cursor: pointer;
-    transition: transform 0.3s ease-in-out;
-  }
-
-  & > img:hover {
-    transform: scale(1.05);
-  }
-
   & > div {
     position: absolute;
     left: 50%;
@@ -86,5 +73,18 @@ export const Item = styled.div`
     font-weight: bold;
     color: #ffdf43;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  }
+`;
+
+export const Image = styled.img`
+  width: 30rem;
+  height: 30rem;
+  border-radius: 15px;
+
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
   }
 `;

@@ -9,9 +9,11 @@ import crown from "../assets/crown.png";
 function WorldCup() {
   const winners = useRef([]);
   const round = useRef(gameData.length / 2);
+  const [fighters, setFighters] = useState(
+    gameData.sort(() => Math.random() - 0.5)
+  );
   const [leftRound, setLeftRound] = useState(round.current);
-  const [fighters, setFighters] = useState(gameData);
-  const [visible, setVisible] = useState(true);
+  const [win, setWin] = useState(false);
 
   const match = [];
   if (fighters.length >= 2) {
@@ -28,7 +30,7 @@ function WorldCup() {
       if (winners.current.length === 1) {
         setFighters([]);
 
-        setVisible(false);
+        setWin(true);
         return;
       }
       setFighters(winners.current);
@@ -42,7 +44,7 @@ function WorldCup() {
   };
 
   const showWinner = () => {
-    if (visible) {
+    if (!win) {
       return (
         <p>
           {leftRound} / {round.current}
@@ -62,8 +64,8 @@ function WorldCup() {
         {match.map((fighter) => {
           return <Fighter gameInfo={fighter} handleClick={handleClick} />;
         })}
-        {visible && <img src={vs} alt="vs" />}
-        {!visible && <img src={crown} alt="crown" />}
+        {!win && <img src={vs} alt="vs" />}
+        {win && <img src={crown} alt="crown" />}
       </Main>
     </React.Fragment>
   );
