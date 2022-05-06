@@ -1,6 +1,7 @@
 import gameData from "../utils/gameData";
 import Fighter from "./Fighter";
 import React, { useRef, useState } from "react";
+import { Header, Main } from "../style";
 
 function WorldCup() {
   const winners = useRef([]);
@@ -30,10 +31,12 @@ function WorldCup() {
 
   return (
     <React.Fragment>
-      <h1>여우 월드컵</h1>
-      {round.map((fighter) => {
-        return <Fighter gameInfo={fighter} handleClick={handleClick} />;
-      })}
+      <Header>여우 월드컵</Header>
+      <Main>
+        {round.map((fighter) => {
+          return <Fighter gameInfo={fighter} handleClick={handleClick} />;
+        })}
+      </Main>
     </React.Fragment>
   );
 }
