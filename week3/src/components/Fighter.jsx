@@ -1,4 +1,4 @@
-import { Item } from "../style";
+import { Item } from "../style/style";
 
 function Fighter(props) {
   const { gameInfo, handleClick } = props;

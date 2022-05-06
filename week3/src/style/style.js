@@ -27,6 +27,12 @@ export const Header = styled.header`
     color: white;
     text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
   }
+
+  & > p {
+    margin-top: 1.5rem;
+    text-align: center;
+    font-size: 3rem;
+  }
 `;
 
 export const Main = styled.main`
@@ -42,11 +48,20 @@ export const Main = styled.main`
 
     width: 15rem;
   }
+
+  & > img:nth-child(2) {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 10rem;
+  }
 `;
 
 export const Item = styled.div`
   position: relative;
-  margin: 5rem;
+  margin: 4rem 5rem;
 
   & > img {
     width: 30rem;
