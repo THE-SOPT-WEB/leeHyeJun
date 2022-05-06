@@ -32,7 +32,9 @@ function WorldCup() {
 
   return (
     <React.Fragment>
-      <Header>여우 월드컵</Header>
+      <Header>
+        <h1>여우 월드컵</h1>
+      </Header>
       <Main>
         {round.map((fighter) => {
           return <Fighter gameInfo={fighter} handleClick={handleClick} />;

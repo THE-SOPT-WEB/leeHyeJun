@@ -1,14 +1,18 @@
 import styled from "styled-components";
 import { createGlobalStyle } from "styled-components";
+import reset from "styled-reset";
 
 export const GlobalStyle = createGlobalStyle`
+  ${reset}
+
   @font-face {
     font-family: 'KOTRAHOPE';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/KOTRAHOPE.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
   }
-  * {
+
+  body {
     font-family: 'KOTRAHOPE';
   }
 `;
@@ -17,10 +21,12 @@ export const Header = styled.header`
   background-color: #ffdf43;
   padding: 2rem;
 
-  font-size: 6rem;
-  text-align: center;
-  color: white;
-  text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
+  & > h1 {
+    font-size: 6rem;
+    text-align: center;
+    color: white;
+    text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
+  }
 `;
 
 export const Main = styled.main`
