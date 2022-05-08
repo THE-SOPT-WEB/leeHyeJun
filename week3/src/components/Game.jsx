@@ -8,9 +8,7 @@ import crown from "../assets/crown.png";
 function Game() {
   const winners = useRef([]);
   const round = useRef(gameInfo.length / 2);
-  const [fighters, setFighters] = useState(
-    gameInfo.sort(() => Math.random() - 0.5)
-  );
+  const [fighters, setFighters] = useState(gameInfo.sort(() => Math.random() - 0.5));
   const [leftRound, setLeftRound] = useState(round.current);
   const [win, setWin] = useState(false);
 
@@ -39,15 +37,9 @@ function Game() {
         <p>{win ? "우승자" : `${leftRound} / ${round.current}`}</p>
       </Header>
       <Main>
-        {!win &&
-          fighters
-            .slice(0, 2)
-            .map((fighter) => (
-              <GameItem gameInfo={fighter} handleClick={handleClick} />
-            ))}
-        {win && (
-          <GameItem gameInfo={winners.current[0]} handleClick={handleClick} />
-        )}
+        {!win && fighters.slice(0, 2).map((fighter) => 
+          (<GameItem gameInfo={fighter} handleClick={handleClick} />))}
+        {win && (<GameItem gameInfo={winners.current[0]} handleClick={handleClick} />)}
         {win ? <img src={crown} alt="crown" /> : <img src={vs} alt="vs" />}
       </Main>
     </>
