@@ -7,7 +7,7 @@ import pic6 from "../assets/방전여우.gif";
 import pic7 from "../assets/응앜여우.gif";
 import pic8 from "../assets/풀먹여우.gif";
 
-const gameData = [
+const gameInfo = [
   {
     img: pic1,
     name: "닦달여우",
@@ -42,4 +42,4 @@ const gameData = [
   },
 ];
 
-export default gameData;
+export default gameInfo;

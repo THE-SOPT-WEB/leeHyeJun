@@ -1,6 +1,6 @@
 import { Item, Image } from "../style/style";
 
-function Fighter(props) {
+function GameItem(props) {
   const { gameInfo, handleClick } = props;
 
   return (
@@ -17,4 +17,4 @@ function Fighter(props) {
   );
 }
 
-export default Fighter;
+export default GameItem;
