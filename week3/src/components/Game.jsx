@@ -6,8 +6,8 @@ import styled from "styled-components";
 function Game() {
   const winners = useRef([]);
   const round = useRef(gameInfo.length / 2);
-  const [fighters, setFighters] = useState(
-    gameInfo.sort(() => Math.random() - 0.5)
+  const [fighters, setFighters] = useState(() =>
+    [...gameInfo].sort(() => Math.random() - 0.5)
   );
   const [leftRound, setLeftRound] = useState(round.current);
   const [win, setWin] = useState(false);
