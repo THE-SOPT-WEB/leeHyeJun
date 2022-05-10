@@ -1,9 +1,7 @@
 import React, { useRef, useState } from "react";
-import GameItem from "./GameItem";
+import GameResult from "./GameResult";
 import gameInfo from "../utils/constant";
 import { Header, Main } from "../style/style";
-import vs from "../assets/vs.png";
-import crown from "../assets/crown.png";
 
 function Game() {
   const winners = useRef([]);
@@ -39,19 +37,12 @@ function Game() {
         <p>{win ? "우승자" : `${leftRound} / ${round.current}`}</p>
       </Header>
       <Main>
-        {win ? (
-          <>
-            <GameItem gameInfo={winners.current[0]} handleClick={handleClick} />
-            <img src={crown} alt="crown" />
-          </>
-        ) : (
-          <>
-            {fighters.slice(0, 2).map((fighter) => (
-              <GameItem gameInfo={fighter} handleClick={handleClick} />
-            ))}
-            <img src={vs} alt="vs" />
-          </>
-        )}
+        <GameResult
+          win={win}
+          winners={winners}
+          fighters={fighters}
+          handleClick={handleClick}
+        ></GameResult>
       </Main>
     </>
   );
