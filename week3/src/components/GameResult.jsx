@@ -9,6 +9,9 @@ function GameResult({ win, winners, fighters, handleClick }) {
         <>
           <GameItem gameInfo={winners.current[0]} handleClick={handleClick} />
           <img src={crown} alt="crown" />
+          <a href="/">
+            <button type="button">다시하기</button>
+          </a>
         </>
       );
     default:
