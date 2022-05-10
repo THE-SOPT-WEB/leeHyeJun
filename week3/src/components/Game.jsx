@@ -17,7 +17,7 @@ function Game() {
     setLeftRound((prev) => prev - 1);
     setFighters((prev) => prev.slice(2));
 
-    if (fighters.length === 2) return;
+    if (fighters.length !== 2) return;
     if (winners.current.length === 1) {
       setFighters([]);
       setWin(true);
