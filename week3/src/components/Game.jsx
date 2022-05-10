@@ -43,11 +43,13 @@ function Game() {
           handleClick={handleClick}
         ></GameResult>
       </Main>
-      <Footer>
-        <a href="/">
-          <ReBtn type="button">다시하기</ReBtn>
-        </a>
-      </Footer>
+      {win && (
+        <Footer>
+          <a href="/">
+            <ReBtn type="button">다시하기</ReBtn>
+          </a>
+        </Footer>
+      )}
     </>
   );
 }
