@@ -43,13 +43,18 @@ function Game() {
           handleClick={handleClick}
         ></GameResult>
       </Main>
+      <Footer>
+        <a href="/">
+          <ReBtn type="button">다시하기</ReBtn>
+        </a>
+      </Footer>
     </>
   );
 }
 
 export default Game;
 
-export const Header = styled.header`
+const Header = styled.header`
   background-color: #ffdf43;
   padding: 2rem;
 
@@ -67,7 +72,7 @@ export const Header = styled.header`
   }
 `;
 
-export const Main = styled.main`
+const Main = styled.main`
   display: flex;
   position: relative;
   justify-content: center;
@@ -89,4 +94,18 @@ export const Main = styled.main`
 
     width: 10rem;
   }
+`;
+
+const Footer = styled.footer`
+  text-decoration: none;
+  text-align: center;
+`;
+
+const ReBtn = styled.button`
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  color: black;
+  font-size: 40px;
+  cursor: pointer;
 `;

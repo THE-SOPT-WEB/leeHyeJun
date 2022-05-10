@@ -23,7 +23,7 @@ const GlobalStyle = createGlobalStyle`
     font-style: normal;
   }
 
-  body {
+  body, button {
     font-family: 'KOTRAHOPE';
   }
 `;
