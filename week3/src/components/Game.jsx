@@ -99,6 +99,7 @@ const Main = styled.main`
 `;
 
 const Footer = styled.footer`
+  margin-bottom: 40px;
   text-decoration: none;
   text-align: center;
 `;
@@ -108,6 +109,6 @@ const ReBtn = styled.button`
   border: none;
   border-radius: 10px;
   color: black;
-  font-size: 40px;
+  font-size: 35px;
   cursor: pointer;
 `;
