@@ -1,10 +1,16 @@
+import styled from "styled-components";
+import { createGlobalStyle } from "styled-components";
+import reset from "styled-reset";
+import beer from "./assets/beer.png";
+import { MdSearch } from "react-icons/md";
 import axios from "axios";
 import { useRef, useState } from "react";
 
 function App() {
   const [dataList, setDataList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const formRef = useRef(null);
+  const checkRef = useRef(false);
+  const locRef = useRef(null);
 
   const getPosInfo = async () => {
     const location = new Promise((resolve, reject) => {
@@ -81,20 +87,24 @@ function App() {
     }
 
     if (!dataList.length) {
-      return <h2>아무고토 없어요</h2>;
+      return (
+        <NoData>
+          <p>아무고토 없어요</p>
+          <img src={beer} alt="맥주" />
+        </NoData>
+      );
     } else {
-      const [check] = formRef.current.children;
-      const around = check.checked;
       return dataList.map(
         ({ id, phone, address_name, place_name, place_url, distance }) => (
-          <div key={id}>
-            <h2>
+          <Store key={id}>
+            <StoreName>
               <a href={place_url}>{place_name}</a>
-            </h2>
-            <p>{phone ? phone : "번호가 없어요"}</p>
-            {!around && <p>{address_name}</p>}
-            {around && <p>{distance}미터</p>}
-          </div>
+            </StoreName>
+            <StorePhone>{phone ? phone : "번호가 없어요"}</StorePhone>
+            <StoreInfo>
+              {checkRef.current ? `${distance}미터` : { address_name }}
+            </StoreInfo>
+          </Store>
         )
       );
     }
@@ -103,37 +113,201 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (formRef.current) {
-      const [check, location] = formRef.current.children;
-      if (check.checked) {
-        getPosInfo();
-      } else {
-        getLocationData(location.value);
-      }
+    if (checkRef.current.checked) {
+      getPosInfo();
+    } else {
+      getLocationData(locRef.current.value);
     }
   };
 
-  const handleClick = (e) => {
-    const locInput = e.target.nextSibling;
-    if (e.target.checked) {
-      locInput.setAttribute("disabled", true);
+  const handleClick = () => {
+    if (checkRef.current.checked) {
+      locRef.current.setAttribute("disabled", true);
     } else {
-      locInput.removeAttribute("disabled");
+      locRef.current.removeAttribute("disabled");
     }
   };
 
   return (
     <>
-      <h1>우리 동네 맥주집</h1>
-      <form ref={formRef} onSubmit={(e) => handleSubmit(e)}>
-        <label for="around">우리 동네 검색</label>
-        <input id="around" type="checkbox" onClick={(e) => handleClick(e)} />
-        <input type="text" placeholder="지역을 입력해주세요." />
-        <button type="submit">검색하기</button>
-      </form>
-      {showDataList()}
+      <GlobalStyle />
+      <MainWrapper>
+        <MainContainer>
+          <Title>맥주가 술이야?</Title>
+          <SearchForm onSubmit={(e) => handleSubmit(e)}>
+            <SearchAround>
+              <label htmlFor="around">현재 위치에서 검색하기</label>
+              <input
+                ref={checkRef}
+                id="around"
+                type="checkbox"
+                onClick={() => handleClick()}
+              />
+            </SearchAround>
+            <SearchLocation>
+              <input
+                ref={locRef}
+                type="text"
+                placeholder="지역을 입력해주세요."
+              />
+              <button type="submit">
+                <MdSearch />
+              </button>
+            </SearchLocation>
+          </SearchForm>
+          <Result>{showDataList()}</Result>
+        </MainContainer>
+      </MainWrapper>
     </>
   );
 }
 
 export default App;
+
+const GlobalStyle = createGlobalStyle`
+  ${reset}
+
+  @font-face {
+    font-family: 'LeferiPoint-WhiteObliqueA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/LeferiPoint-WhiteObliqueA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+`;
+
+const MainWrapper = styled.div`
+  padding: 20px;
+  height: 100vh;
+  background-color: black;
+  color: white;
+  font-family: "LeferiPoint-WhiteObliqueA";
+  display: flex;
+  justify-content: center;
+`;
+
+const MainContainer = styled.div`
+  width: 25rem;
+`;
+
+const Title = styled.div`
+  padding: 20px 0;
+  font-size: 3rem;
+  font-weight: bold;
+  border-bottom: 2px solid #ffda53;
+  text-align: center;
+`;
+
+const SearchForm = styled.form`
+  color: white;
+  border-bottom: 2px solid #ffda53;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 0;
+`;
+
+const SearchAround = styled.div`
+  padding-bottom: 10px;
+
+  label:hover,
+  input:hover {
+    cursor: pointer;
+  }
+`;
+
+const SearchLocation = styled.div`
+  display: flex;
+  color: white;
+
+  input {
+    background-color: #333232;
+    width: 15rem;
+    height: 2.5rem;
+    border: 1px solid white;
+    border-radius: 20px;
+    color: #ffda53;
+    font-size: 15px;
+
+    &:focus {
+      color: white;
+    }
+  }
+
+  button {
+    color: white;
+    background: none;
+    font-size: 35px;
+    cursor: pointer;
+    margin-left: 3px;
+
+    &:hover {
+      color: #ffda53;
+    }
+  }
+`;
+
+const Result = styled.div`
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const Store = styled.div`
+  color: black;
+  width: 23rem;
+  height: 5rem;
+  background-color: white;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 15px;
+  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+  &:hover {
+    transform: scale(1.03);
+    background-color: #ffda53;
+  }
+`;
+
+const StoreName = styled.h2`
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 5px;
+
+  & > a {
+    text-decoration: none;
+
+    &:link,
+    &:visited {
+      color: black;
+    }
+
+    &:hover {
+      color: white;
+    }
+  }
+`;
+
+const StorePhone = styled.div`
+  width: 9rem;
+  height: 1rem;
+  background-color: #333232;
+  color: white;
+  border-radius: 10px;
+  padding: 5px;
+  margin-bottom: 10px;
+  text-align: center;
+`;
+
+const StoreInfo = styled.div`
+  font-weight: bolder;
+  text-align: right;
+`;
+
+const NoData = styled.div`
+  padding-top: 3rem;
+  text-align: center;
+
+  & > img {
+    width: 30rem;
+  }
+`;
