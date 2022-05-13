@@ -102,7 +102,7 @@ function App() {
             </StoreName>
             <StorePhone>{phone ? phone : "번호가 없어요"}</StorePhone>
             <StoreInfo>
-              {checkRef.current ? `${distance} 미터` : `${address_name}`}
+              {checkRef.current.checked ? `${distance} 미터` : address_name}
             </StoreInfo>
           </Store>
         )
