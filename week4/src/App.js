@@ -173,12 +173,15 @@ const GlobalStyle = createGlobalStyle`
     font-weight: normal;
     font-style: normal;
   }
+
+  body {
+    background-color: black;
+  }
 `;
 
 const MainWrapper = styled.div`
   padding: 20px;
   height: 100vh;
-  background-color: black;
   color: white;
   font-family: "LeferiPoint-WhiteObliqueA";
   display: flex;
