@@ -91,7 +91,7 @@ function App() {
             <h2>
               <a href={place_url}>{place_name}</a>
             </h2>
-            <p>{phone}</p>
+            <p>{phone ? phone : "번호가 없어요"}</p>
             {!around && <p>{address_name}</p>}
             {around && <p>{distance}미터</p>}
           </div>
