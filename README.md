@@ -2,7 +2,8 @@
 `1주차` 햄식이를 도와줘! [`PR`](https://github.com/THE-SOPT-WEB/leeHyeJun/pull/1)  
 `2주차-1` 내가 누구게? [`PR`](https://github.com/THE-SOPT-WEB/leeHyeJun/pull/3)  
 `2주차-2` 햄식이는 떠났습니다 [`PR`](https://github.com/THE-SOPT-WEB/leeHyeJun/pull/4)  [`배포`](https://super-crisp-c4d4b3.netlify.app/)  
-`3주차` 랜선 최애 멍멍 덕질 월드컵 [`PR`](https://github.com/THE-SOPT-WEB/leeHyeJun/pull/5) [`배포`](https://darling-maamoul-87569f.netlify.app/)
+`3주차` 랜선 최애 멍멍 덕질 월드컵 [`PR`](https://github.com/THE-SOPT-WEB/leeHyeJun/pull/5) [`배포`](https://darling-maamoul-87569f.netlify.app/)  
+`4주차` 맥주가 술이야? [`PR`](https://github.com/THE-SOPT-WEB/leeHyeJun/pull/6)
 
 ## 커밋 컨벤션
 `기능(feat)`: 새로운 기능을 추가  
