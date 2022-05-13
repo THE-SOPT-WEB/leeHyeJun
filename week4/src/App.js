@@ -102,7 +102,7 @@ function App() {
             </StoreName>
             <StorePhone>{phone ? phone : "번호가 없어요"}</StorePhone>
             <StoreInfo>
-              {checkRef.current ? `${distance}미터` : { address_name }}
+              {checkRef.current ? `${distance} 미터` : `${address_name}`}
             </StoreInfo>
           </Store>
         )
@@ -133,7 +133,7 @@ function App() {
       <GlobalStyle />
       <MainWrapper>
         <MainContainer>
-          <Title>맥주가 술이야?</Title>
+          <Title>맥주가 술이야 ?</Title>
           <SearchForm onSubmit={(e) => handleSubmit(e)}>
             <SearchAround>
               <label htmlFor="around">현재 위치에서 검색하기</label>
