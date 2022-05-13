@@ -124,8 +124,10 @@ function App() {
 
   return (
     <>
+      <h1>우리 동네 맥주집</h1>
       <form ref={formRef} onSubmit={(e) => handleSubmit(e)}>
-        <input type="checkbox" onClick={(e) => handleClick(e)} />
+        <label for="around">우리 동네 검색</label>
+        <input id="around" type="checkbox" onClick={(e) => handleClick(e)} />
         <input type="text" placeholder="지역을 입력해주세요." />
         <button type="submit">검색하기</button>
       </form>
