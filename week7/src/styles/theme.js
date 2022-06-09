@@ -4,11 +4,8 @@ const color = {
   purple: "#8040FF",
 };
 
-const font = {};
-
 const theme = {
   color,
-  font,
 };
 
 export default theme;
