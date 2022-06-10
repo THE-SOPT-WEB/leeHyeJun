@@ -16,8 +16,8 @@ const GlobalStyle = createGlobalStyle`
   }
 
   @font-face {
-    font-family: 'IM_Hyemin-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/IM_Hyemin-Regular.woff2') format('woff');
+    font-family: 'LeferiPoint-WhiteObliqueA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/LeferiPoint-WhiteObliqueA.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
