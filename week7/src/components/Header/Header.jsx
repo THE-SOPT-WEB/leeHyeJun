@@ -25,7 +25,7 @@ const HeaderWrapper = styled.div`
   }
 
   h1 {
-    font-family: "SDSamliphopangche_Outline";
+    font-family: ${({ theme }) => theme.font.title};
     font-size: 40px;
     color: ${({ theme }) => theme.color.purple};
   }
