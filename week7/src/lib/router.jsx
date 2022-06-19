@@ -1,11 +1,12 @@
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import { MainPage } from "../pages";
+import { MainPage, EditPage } from "../pages";
 
 const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<MainPage />} />
+        <Route path="/edit" element={<EditPage />} />
       </Routes>
     </BrowserRouter>
   );
