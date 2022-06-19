@@ -5,20 +5,21 @@ function Modal({ hidden, hideModal, modalInfo, unlock }) {
     <>
       {!hidden && (
         <>
-          <ModalBackground onClick={hideModal} />
-          <ModalItem>
-            <h1>비밀번호를 입력하세요</h1>
-            <p>{modalInfo.hint}</p>
-            <input
-              type="text"
-              onChange={(e) => {
-                if (e.target.value === modalInfo.password) {
-                  unlock(true);
-                  hideModal(true);
-                }
-              }}
-            />
-          </ModalItem>
+          <ModalBackground onClick={hideModal}>
+            <ModalItem>
+              <h1>비밀번호를 입력하세요</h1>
+              <p>{modalInfo.hint}</p>
+              <input
+                type="text"
+                onChange={(e) => {
+                  if (e.target.value === modalInfo.password) {
+                    unlock(true);
+                    hideModal(true);
+                  }
+                }}
+              />
+            </ModalItem>
+          </ModalBackground>
         </>
       )}
     </>
@@ -26,17 +27,18 @@ function Modal({ hidden, hideModal, modalInfo, unlock }) {
 }
 
 const ModalBackground = styled.div`
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.6);
   z-index: 1;
 `;
 
 const ModalItem = styled.div`
   display: flex;
+  justify-content: center;
   flex-direction: column;
   align-items: center;
   gap: 20px;
