@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import lock from "../../assets/lock.png";
 import Modal from "./Modal";
 
@@ -41,7 +42,9 @@ function Post({ post }) {
             From. <b>{post.name}</b>
           </PostName>
           <PostContent>{post.content}</PostContent>
-          <PostEditButton>몰래 수정하기</PostEditButton>
+          <Link to="/edit">
+            <PostEditButton>몰래 수정하기</PostEditButton>
+          </Link>
         </PostItem>
       )}
     </PostWrapper>
