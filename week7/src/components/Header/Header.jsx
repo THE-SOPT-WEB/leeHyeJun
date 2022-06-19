@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import icon from "../../assets/web_icon.png";
 
@@ -5,7 +6,9 @@ function Header() {
   return (
     <HeaderWrapper>
       <img src={icon} alt="웹 아이콘" />
-      <h1>웹파트 우체통</h1>
+      <Link to="/" style={{ textDecoration: "none" }}>
+        <h1>웹파트 우체통</h1>
+      </Link>
     </HeaderWrapper>
   );
 }
