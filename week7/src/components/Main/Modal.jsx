@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-function Modal({ hidden, hideModal, modalInfo }) {
+function Modal({ hidden, hideModal, modalInfo, unlock }) {
   return (
     <>
       {!hidden && (
@@ -12,7 +12,10 @@ function Modal({ hidden, hideModal, modalInfo }) {
             <input
               type="text"
               onChange={(e) => {
-                console.log(e.target.value);
+                if (e.target.value === modalInfo.password) {
+                  unlock(true);
+                  hideModal(true);
+                }
               }}
             />
           </ModalItem>

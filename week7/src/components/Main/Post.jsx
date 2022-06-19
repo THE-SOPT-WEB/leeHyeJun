@@ -24,6 +24,9 @@ function Post({ post }) {
           setHidden(true);
         }}
         modalInfo={modalInfo}
+        unlock={() => {
+          setIsLocked(false);
+        }}
       ></Modal>
       {isLocked ? (
         <LockPost onClick={openModal}></LockPost>
