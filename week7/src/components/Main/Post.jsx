@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { useState } from "react";
 import lock from "../../assets/lock.png";
 import Modal from "./Modal";
@@ -41,6 +41,7 @@ function Post({ post }) {
             From. <b>{post.name}</b>
           </PostName>
           <PostContent>{post.content}</PostContent>
+          <PostEditButton>몰래 수정하기</PostEditButton>
         </PostItem>
       )}
     </PostWrapper>
@@ -106,4 +107,19 @@ const PostContent = styled.p`
   color: white;
   line-height: 25px;
   text-align: center;
+`;
+
+const PostEditButton = styled.button`
+  width: 120px;
+  height: 30px;
+  border: none;
+  border-radius: 10px;
+  background-color: ${({ theme }) => theme.color.purple};
+  color: white;
+  font-family: ${({ theme }) => theme.font.content};
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
 `;
