@@ -107,7 +107,7 @@ const PostContent = styled.p`
   color: white;
   line-height: 25px;
   text-align: center;
-  overflow-y: scroll;
+  overflow-y: auto;
 `;
 
 const PostEditButton = styled.button`
