@@ -8,6 +8,7 @@
 | 2주차-2 | 햄식이는 떠났습니다 | [PR](https://github.com/THE-SOPT-WEB/leeHyeJun/pull/4)  | [`배포`](https://super-crisp-c4d4b3.netlify.app/)  
 | 3주차 | 랜선 최애 멍멍 덕질 월드컵 | [PR](https://github.com/THE-SOPT-WEB/leeHyeJun/pull/5)  | [`배포`](https://darling-maamoul-87569f.netlify.app/)
 | 4주차 | 맥주가 술이야? | [PR](https://github.com/THE-SOPT-WEB/leeHyeJun/pull/6)  | [`배포`](https://find-beer-store-solar3070.vercel.app/)  
+| 7주차 | 웹파트 우체통 | [PR](https://github.com/THE-SOPT-WEB/leeHyeJun/pull/7)  | [`배포`](https://web-postbox.vercel.app/)  
 
 
 ## 커밋 컨벤션
