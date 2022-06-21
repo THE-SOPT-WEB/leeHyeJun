@@ -11,7 +11,9 @@ function Header() {
           <h1>웹파트 우체통</h1>
         </Link>
       </HeaderTitle>
-      <button type="button">편지 쓰러가기</button>
+      <Link to="/write">
+        <button type="button">편지 쓰러가기</button>
+      </Link>
     </HeaderWrapper>
   );
 }
