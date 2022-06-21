@@ -6,7 +6,7 @@ const Router = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path="/edit" element={<EditPage />} />
+        <Route path="/edit/:postId" element={<EditPage />} />
       </Routes>
     </BrowserRouter>
   );
