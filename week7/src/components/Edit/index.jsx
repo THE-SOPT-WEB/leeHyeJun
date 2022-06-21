@@ -17,4 +17,5 @@ export default EditPage;
 const EditWrapper = styled.div`
   display: flex;
   justify-content: center;
+  padding-bottom: 50px;
 `;
