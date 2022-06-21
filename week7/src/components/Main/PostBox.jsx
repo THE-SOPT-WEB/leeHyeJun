@@ -16,6 +16,5 @@ export default PostBox;
 const PostBoxWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
-  justify-items: center;
+  gap: 70px;
 `;

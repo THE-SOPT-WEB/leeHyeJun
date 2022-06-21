@@ -29,5 +29,7 @@ function MainPage() {
 export default MainPage;
 
 const MainWrapper = styled.div`
+  display: flex;
+  justify-content: center;
   margin-bottom: 50px;
 `;

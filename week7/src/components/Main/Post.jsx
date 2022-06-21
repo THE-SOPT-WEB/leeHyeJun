@@ -54,21 +54,21 @@ function Post({ post }) {
 export default Post;
 
 const PostWrapper = styled.div`
-  width: 350px;
-  height: 300px;
+  width: 300px;
+  height: 250px;
   background-color: ${({ theme }) => theme.color.purple};
 `;
 
 const LockPost = styled(PostWrapper)`
   background-image: url(${lock});
-  background-size: 130px;
+  background-size: 100px;
   background-repeat: no-repeat;
   background-position: center center;
   cursor: pointer;
   transition: background-size 0.2s ease-in-out;
 
   &:hover {
-    background-size: 140px;
+    background-size: 110px;
   }
 `;
 
