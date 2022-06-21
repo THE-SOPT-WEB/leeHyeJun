@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { client } from "../../lib/api";
 import { ReactComponent as LikeIcon } from "../../assets/message-mail.svg";
@@ -7,20 +7,20 @@ import { ReactComponent as LikeIcon } from "../../assets/message-mail.svg";
 const postInfoList = [
   {
     label: "이름",
-    name: "name",
+    id: "name",
   },
   {
     label: "내용",
-    name: "content",
+    id: "content",
   },
   {
     label: "비밀번호",
-    name: "password",
+    id: "password",
     type: "password",
   },
   {
     label: "비밀번호 힌트",
-    name: "hint",
+    id: "hint",
   },
 ];
 
@@ -74,16 +74,11 @@ function EditForm({ postId }) {
 
   return (
     <EditFormWrapper>
-      <PostForm onSubmit={handleSubmit} id="myForm" name="myForm">
-        {postInfoList.map(({ label, name, placeholder, type }) => (
-          <InputWrapper key={name}>
-            <label htmlFor={name}>{label}</label>
-            <input
-              type={type || "text"}
-              placeholder={placeholder}
-              name={name}
-              ref={inputValue}
-            />
+      <PostForm onSubmit={handleSubmit}>
+        {postInfoList.map(({ label, id, placeholder, type }) => (
+          <InputWrapper key={id}>
+            <label htmlFor={id}>{label}</label>
+            <input type={type || "text"} id={id} name={id} ref={inputValue} />
           </InputWrapper>
         ))}
         <SubmitButton type="submit">몰래 수정하기</SubmitButton>
