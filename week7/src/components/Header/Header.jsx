@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import icon from "../../assets/web_icon.png";
+import { useLocation } from "react-router-dom";
 
 function Header() {
+  const location = useLocation();
+
   return (
     <HeaderWrapper>
       <HeaderTitle>
@@ -11,9 +14,11 @@ function Header() {
           <h1>웹파트 우체통</h1>
         </Link>
       </HeaderTitle>
-      <Link to="/write">
-        <button type="button">편지 쓰러가기</button>
-      </Link>
+      {location.pathname === "/" ? (
+        <Link to="/write">
+          <button type="button">편지 쓰러가기</button>
+        </Link>
+      ) : null}
     </HeaderWrapper>
   );
 }
