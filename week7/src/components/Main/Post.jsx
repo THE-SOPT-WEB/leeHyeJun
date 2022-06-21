@@ -78,7 +78,7 @@ const PostItem = styled(PostWrapper)`
   align-items: center;
   gap: 15px;
 
-  padding: 10px;
+  padding: 20px;
   width: inherit;
   height: inherit;
   background-color: ${({ theme }) => theme.color.lightpurple};
