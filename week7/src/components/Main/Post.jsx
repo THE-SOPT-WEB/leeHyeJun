@@ -35,14 +35,14 @@ function Post({ post }) {
         <PostItem>
           <PostImage>
             {post.images?.map((image) => (
-              <img src={image} alt="썸네일" />
+              <img key={image} src={image} alt="썸네일" />
             ))}
           </PostImage>
           <PostName>
             From. <b>{post.name}</b>
           </PostName>
           <PostContent>{post.content}</PostContent>
-          <Link to="/edit">
+          <Link to={`/edit/${post._id}`}>
             <PostEditButton>몰래 수정하기</PostEditButton>
           </Link>
         </PostItem>
