@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { client } from "../../lib/api";
 import { ReactComponent as LikeIcon } from "../../assets/message-mail.svg";
@@ -7,20 +7,20 @@ import { ReactComponent as LikeIcon } from "../../assets/message-mail.svg";
 const postInfoList = [
   {
     label: "이름",
-    id: "name",
+    name: "name",
   },
   {
     label: "내용",
-    id: "content",
+    name: "content",
   },
   {
     label: "비밀번호",
-    id: "password",
+    name: "password",
     type: "password",
   },
   {
     label: "비밀번호 힌트",
-    id: "hint",
+    name: "hint",
   },
 ];
 
@@ -47,7 +47,7 @@ function EditForm({ postId }) {
 
   const inputValue = (ref) => {
     if (ref && post) {
-      ref.value = post[ref.id];
+      ref.value = post[ref.name];
     }
   };
 
@@ -75,13 +75,13 @@ function EditForm({ postId }) {
   return (
     <EditFormWrapper>
       <PostForm onSubmit={handleSubmit} id="myForm" name="myForm">
-        {postInfoList.map(({ label, id, placeholder, type }) => (
-          <InputWrapper key={id}>
-            <label htmlFor={id}>{label}</label>
+        {postInfoList.map(({ label, name, placeholder, type }) => (
+          <InputWrapper key={name}>
+            <label htmlFor={name}>{label}</label>
             <input
               type={type || "text"}
               placeholder={placeholder}
-              id={id}
+              name={name}
               ref={inputValue}
             />
           </InputWrapper>
