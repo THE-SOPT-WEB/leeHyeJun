@@ -13,8 +13,8 @@ function Modal({ hidden, hideModal, modalInfo, unlock }) {
               type="text"
               onChange={(e) => {
                 if (e.target.value === modalInfo.password) {
-                  unlock(true);
-                  hideModal(true);
+                  unlock();
+                  hideModal();
                 }
               }}
             />
