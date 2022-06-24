@@ -1,9 +1,8 @@
-import { Header, Edit } from "../components/index";
+import { Edit } from "../components/index";
 
 function EditPage() {
   return (
     <>
-      <Header />
       <Edit />
     </>
   );

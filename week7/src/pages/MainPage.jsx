@@ -1,9 +1,8 @@
-import { Header, Main } from "../components/index";
+import { Main } from "../components/index";
 
 function MainPage() {
   return (
     <>
-      <Header />
       <Main />
     </>
   );

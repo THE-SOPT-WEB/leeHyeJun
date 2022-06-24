@@ -1,9 +1,8 @@
-import { Header, Write } from "../components/index";
+import { Write } from "../components/index";
 
 function WritePage() {
   return (
     <>
-      <Header />
       <Write />
     </>
   );
