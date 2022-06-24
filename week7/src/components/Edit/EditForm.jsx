@@ -3,26 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { client } from "../../lib/api";
 import { ReactComponent as LikeIcon } from "../../assets/message-mail.svg";
-
-const postInfoList = [
-  {
-    label: "이름",
-    id: "name",
-  },
-  {
-    label: "내용",
-    id: "content",
-  },
-  {
-    label: "비밀번호",
-    id: "password",
-    type: "password",
-  },
-  {
-    label: "비밀번호 힌트",
-    id: "hint",
-  },
-];
+import Inputs from "../common/Inputs";
 
 function EditForm({ postId }) {
   const navigate = useNavigate();
@@ -44,12 +25,6 @@ function EditForm({ postId }) {
   useEffect(() => {
     fetchPost();
   }, []);
-
-  const inputValue = (ref) => {
-    if (ref && post) {
-      ref.value = post[ref.name];
-    }
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -75,12 +50,7 @@ function EditForm({ postId }) {
   return (
     <EditFormWrapper>
       <PostForm onSubmit={handleSubmit}>
-        {postInfoList.map(({ label, id, placeholder, type }) => (
-          <InputWrapper key={id}>
-            <label htmlFor={id}>{label}</label>
-            <input type={type || "text"} id={id} name={id} ref={inputValue} />
-          </InputWrapper>
-        ))}
+        <Inputs post={post} />
         <SubmitButton type="submit">몰래 수정하기</SubmitButton>
       </PostForm>
     </EditFormWrapper>
@@ -103,33 +73,6 @@ const PostForm = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-`;
-
-const InputWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  label {
-    padding: 8px;
-
-    font-size: 25px;
-    font-weight: bold;
-    font-family: ${({ theme }) => theme.font.title};
-  }
-
-  input {
-    width: 350px;
-    height: auto;
-
-    margin-bottom: 20px;
-    border-radius: 10px;
-    border: none;
-
-    text-align: center;
-    font-size: 18px;
-    font-family: ${({ theme }) => theme.font.content};
-  }
 `;
 
 const SubmitButton = styled.button`
