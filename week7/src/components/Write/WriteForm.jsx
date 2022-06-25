@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { client } from "../../lib/api";
 import { useRef } from "react";
-import Inputs from "../common/Inputs";
+import PostForm from "../common/PostForm";
 
 function WriteForm() {
   const navigate = useNavigate();
@@ -19,7 +19,6 @@ function WriteForm() {
   return (
     <WriteFormWrapper>
       <PostForm onSubmit={handleSubmit}>
-        <Inputs />
         <InputLabel htmlFor="images">썸네일</InputLabel>
         <FileUploadButton
           onClick={(e) => {
@@ -54,12 +53,6 @@ const WriteFormWrapper = styled.div`
   padding: 30px 0px;
   border-radius: 10px;
   background-color: ${({ theme }) => theme.color.lightpurple};
-`;
-
-const PostForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 `;
 
 const InputLabel = styled.label`

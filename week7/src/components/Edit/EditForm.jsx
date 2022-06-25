@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { client } from "../../lib/api";
 import { ReactComponent as LikeIcon } from "../../assets/message-mail.svg";
-import Inputs from "../common/Inputs";
+import PostForm from "../common/PostForm";
 
 function EditForm({ postId }) {
   const navigate = useNavigate();
@@ -49,8 +49,7 @@ function EditForm({ postId }) {
 
   return (
     <EditFormWrapper>
-      <PostForm onSubmit={handleSubmit}>
-        <Inputs post={post} />
+      <PostForm onSubmit={handleSubmit} post={post}>
         <SubmitButton type="submit">몰래 수정하기</SubmitButton>
       </PostForm>
     </EditFormWrapper>
@@ -67,12 +66,6 @@ const EditFormWrapper = styled.div`
   padding: 30px 10px;
   border-radius: 10px;
   background-color: ${({ theme }) => theme.color.lightpurple};
-`;
-
-const PostForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 `;
 
 const SubmitButton = styled.button`
