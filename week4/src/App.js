@@ -5,6 +5,7 @@ import beer from "./assets/beer.png";
 import { MdSearch } from "react-icons/md";
 import axios from "axios";
 import { useRef, useState } from "react";
+import Skeleton from "./components/Skeleton";
 
 function App() {
   const [dataList, setDataList] = useState([]);
@@ -83,7 +84,9 @@ function App() {
 
   const showDataList = () => {
     if (isLoading) {
-      return <div>로딩중..</div>;
+      return new Array(5).fill(1).map((_, i) => {
+        return <Skeleton key={i} />;
+      });
     }
 
     if (!dataList.length) {
@@ -230,6 +233,8 @@ const SearchLocation = styled.div`
     border-radius: 20px;
     color: #ffda53;
     font-size: 15px;
+    box-sizing: border-box;
+    padding-left: 15px;
 
     &:focus {
       color: white;
