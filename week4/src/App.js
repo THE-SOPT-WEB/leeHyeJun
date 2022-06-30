@@ -233,6 +233,8 @@ const SearchLocation = styled.div`
     border-radius: 20px;
     color: #ffda53;
     font-size: 15px;
+    box-sizing: border-box;
+    padding-left: 15px;
 
     &:focus {
       color: white;
