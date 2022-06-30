@@ -119,18 +119,27 @@
       </section>
 
       <aside class="cart">
-        <div class="cart__title">
+        <div class="cart__item">
           <h2>장바구니</h2>
+          <ul class="cart__list"></ul>
         </div>
         <div class="cart__total">
           <h2>누적금액</h2>
           <p>0원</p>
         </div>
         <div class="cart__button">
-          <button type="button">주문하기</button>
-          <button type="button">취소하기</button>
+          <button class="cart__order-btn" type="button">주문하기</button>
+          <button class="cart__cancel-btn" type="button">취소하기</button>
         </div>
       </aside>
     </main>
+    <div class="modal hide">
+      <div class="modal__content">
+        <p class="modal__body"></p>
+        <a href="./complete.html">예</a>
+        <button class="modal__close-btn" type="button">아니오</button>
+      </div>
+    </div>
+    <script type="module" src="./main.js"></script>
   </body>
 </html>
