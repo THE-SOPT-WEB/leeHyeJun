@@ -1,17 +1,21 @@
-import styled from "styled-components";
+import styled, { css, keyframes } from "styled-components";
+import { useState } from "react";
 
 function GameItem(props) {
   const { gameInfo, handleClick } = props;
+  const [clicked, setClicked] = useState(false);
 
   return (
-    <Item>
-      <Image
-        src={gameInfo.img}
-        alt={gameInfo.name}
-        onClick={() => {
+    <Item
+      onClick={() => {
+        setClicked((prev) => !prev);
+        setTimeout(() => {
           handleClick(gameInfo);
-        }}
-      />
+          setClicked((prev) => !prev);
+        }, 500);
+      }}
+    >
+      <Image src={gameInfo.img} alt={gameInfo.name} isClicked={clicked} />
       <div>{gameInfo.name}</div>
     </Item>
   );
@@ -36,15 +40,25 @@ const Item = styled.div`
   }
 `;
 
+const swing = keyframes`
+  0% { transform: rotate(3deg); }
+  100% { transform: rotate(-3deg); }
+`;
+
 const Image = styled.img`
   width: 30rem;
   height: 30rem;
   border-radius: 15px;
 
   cursor: pointer;
-  transition: transform 0.3s ease-in-out;
 
-  &:hover {
-    transform: scale(1.05);
-  }
+  ${({ isClicked }) => {
+    console.log("isClicked", isClicked);
+    return (
+      isClicked &&
+      css`
+        animation: ${swing} 0.2s ease-in-out infinite alternate;
+      `
+    );
+  }}
 `;
