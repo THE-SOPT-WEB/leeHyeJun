@@ -12,7 +12,7 @@ function GameItem(props) {
         setTimeout(() => {
           handleClick(gameInfo);
           setClicked((prev) => !prev);
-        }, 100);
+        }, 500);
       }}
     >
       <Image src={gameInfo.img} alt={gameInfo.name} isClicked={clicked} />
